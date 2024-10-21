@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class MenuButtonController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    GameObject _pauseMenu;
+    [SerializeField]
+    GameObject _optionsMenu;
+    public void ResumeGame()
     {
-        
+        _pauseMenu.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void ShowOptions()
     {
-        
+        _optionsMenu.SetActive(true);
+        _pauseMenu.SetActive(false);
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+    public void BackButton()
+    {
+        _pauseMenu.SetActive(true);
+        _optionsMenu.SetActive(false);
     }
 }
