@@ -1,18 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerControllsDefault PlayerControlls;
+    private InputAction _move;
+    private InputAction _pause;
+    void Awake()
     {
-        
+        PlayerControlls = new PlayerControllsDefault();
     }
+    void OnEnable()
+    {
+        _move = PlayerControlls.Player.Pause;
+        _pause = PlayerControlls.Player.Pause;
 
-    // Update is called once per frame
+        _move.Enable();
+        _pause.Enable();
+
+        _pause.performed += Pause;
+    }
+    void OnDisable()
+    {
+        _move.Disable();
+        _pause.Disable();
+    }
     void Update()
     {
-        
+
+    }
+    private void Pause(InputAction.CallbackContext context){
+        Debug.Log("MEmeme");
     }
 }
