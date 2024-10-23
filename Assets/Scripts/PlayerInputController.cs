@@ -1,26 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
 {
-    public static KeyCode InteractKeyCode;
+    //public static KeyCode InteractKeyCode;
     [SerializeField]
     GameObject _pauseMenu;
     public PlayerControllsDefault PlayerControlls;
     InputAction _move;
     InputAction _pause;
     InputAction _interact;
-    InputActionRebindingExtensions.RebindingOperation _interactRebind;
+    //InputActionRebindingExtensions.RebindingOperation _interactRebind;
+    CharacterController _characterController;
+    Vector2 _moveDirection;
     void Awake()
     {
         PlayerControlls = new PlayerControllsDefault();
+        _characterController = GetComponent<CharacterController>();
     }
     void OnEnable()
     {
-        _move = PlayerControlls.Player.Pause;
+        _move = PlayerControlls.Player.Move;
         _pause = PlayerControlls.Player.Pause;
         _interact = PlayerControlls.Player.Interact;
 
@@ -37,9 +41,10 @@ public class PlayerInputController : MonoBehaviour
         _pause.Disable();
         _interact.Disable();
     }
+
     void Update()
     {
-
+        CharacterMove();
     }
     private void Pause(InputAction.CallbackContext context)
     {
@@ -49,9 +54,16 @@ public class PlayerInputController : MonoBehaviour
     {
         Debug.Log("Interacted");
     }
-    public void RebindInteract(InputAction interactKeyCode)
+    // public void RebindInteract(InputAction interactKeyCode)
+    // {
+    //     _interactRebind = interactKeyCode.PerformInteractiveRebinding().Start();
+    //     _interactRebind.Dispose();
+    // }
+    void CharacterMove()
     {
-        _interactRebind = interactKeyCode.PerformInteractiveRebinding().Start();
-        _interactRebind.Dispose();
+        _moveDirection = _move.ReadValue<Vector2>();
+        Vector3 appliedMove = new(_moveDirection.x * 3 * Time.deltaTime, 0, _moveDirection.y * 3 * Time.deltaTime);
+        //_characterController.Move(appliedMove);
+        transform.position += appliedMove;
     }
 }
