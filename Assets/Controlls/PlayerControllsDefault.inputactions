@@ -24,15 +24,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire",
-                    "type": "Button",
-                    "id": "49567942-fae0-491e-a220-b7bb47414823",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "3b8bbbbd-ec9b-47e9-99e0-36132d17c196",
@@ -45,6 +36,15 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "b5d3bbb4-0b90-476b-97ab-77df544c568a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "d27178ae-b326-435e-a2cd-ad3df0064ce9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -164,17 +164,6 @@
                 },
                 {
                     "name": "",
-                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ffec0be9-8809-4aa6-adbe-f15a5a16b557",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -192,6 +181,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df0d238e-cf4a-4beb-b62d-fffc9097e680",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
