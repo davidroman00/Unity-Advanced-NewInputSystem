@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PlayerInputController : MonoBehaviour
 {
@@ -24,6 +25,19 @@ public class PlayerInputController : MonoBehaviour
     float _turnSmoothVelocity;
     float _targetAngle;
     float _appliedAngle;
+    //[SerializeField]
+    //GameObject[] _itemSlots;
+    public List<Item> Inventory = new();
+    Collider _interactableObject;
+
+    public class Item
+    {
+        public SpriteRenderer InventoryImage;
+        public Item(SpriteRenderer img)
+        {
+            InventoryImage = img;
+        }
+    }
     void Awake()
     {
         PlayerControlls = new PlayerControllsDefault();
@@ -54,7 +68,7 @@ public class PlayerInputController : MonoBehaviour
 
     void Update()
     {
-        CharacterMoveAndRotation();
+        //CharacterMoveAndRotation();
     }
     private void Pause(InputAction.CallbackContext context)
     {
@@ -62,7 +76,54 @@ public class PlayerInputController : MonoBehaviour
     }
     private void Interact(InputAction.CallbackContext context)
     {
-        Debug.Log("Interacted");
+        if (_interactableObject != null)
+        {
+            string tag = _interactableObject.tag;
+            switch (tag)
+            {//lo hago con switch por si en el futuro el numero de interacciones sube más.
+                case "Chest":
+                    ChestInteraction();
+                    break;
+                case "Item":
+                    ItemPickUp();
+                    break;
+            }
+        }
+    }
+    void ChestInteraction()
+    {
+        ChestRandomAlgorithm chest = _interactableObject.GetComponentInParent<ChestRandomAlgorithm>();
+        chest.OnChestOpen();
+    }
+    void ItemPickUp()
+    {
+        //if (Inventory.Count < _itemSlots.Length)
+        //{
+        CollectibleItemLogic pickedItem = _interactableObject.GetComponent<CollectibleItemLogic>();
+        Item newInventoryItem = new(pickedItem.Image);
+        Inventory.Add(newInventoryItem);
+        pickedItem.OnItemPicked();
+        //RefreshInventoryUI();
+        //}
+        //else
+        //{
+        Debug.Log("Objeto recogido");
+        //}
+    }
+    /*void RefreshInventoryUI()
+    {
+        for (int i = 0; i < _itemSlots.Length && i < Inventory.Count; i++)
+        {
+            Image img = _itemSlots[i].GetComponent<Image>();
+            img.sprite = Inventory[i].InventoryImage.sprite;
+            Color imgColor = img.color;
+            imgColor.a = 255;
+            img.color = imgColor;
+        }
+    }*/
+    void OnTriggerEnter(Collider collider)
+    {
+        _interactableObject = collider;
     }
     // public void RebindInteract(InputAction interactKeyCode)
     // {
@@ -84,6 +145,4 @@ public class PlayerInputController : MonoBehaviour
         Debug.Log(_initialDirection);
     }
 }
-/*
-        
-*/
+
