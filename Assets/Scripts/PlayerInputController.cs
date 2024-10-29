@@ -12,7 +12,7 @@ public class PlayerInputController : MonoBehaviour
     Transform _camera;
     public PlayerControllsDefault PlayerControlls;
     InputAction _move;
-    InputAction _look;
+    //InputAction _look;
     InputAction _pause;
     InputAction _interact;
     //InputActionRebindingExtensions.RebindingOperation _interactRebind;
@@ -46,12 +46,12 @@ public class PlayerInputController : MonoBehaviour
     void OnEnable()
     {
         _move = PlayerControlls.Player.Move;
-        _look = PlayerControlls.Player.Look;
+        //_look = PlayerControlls.Player.Look;
         _pause = PlayerControlls.Player.Pause;
         _interact = PlayerControlls.Player.Interact;
 
         _move.Enable();
-        _look.Enable();
+        //_look.Enable();
         _pause.Enable();
         _interact.Enable();
 
@@ -61,7 +61,7 @@ public class PlayerInputController : MonoBehaviour
     void OnDisable()
     {
         _move.Disable();
-        _look.Disable();
+        //_look.Disable();
         _pause.Disable();
         _interact.Disable();
     }
