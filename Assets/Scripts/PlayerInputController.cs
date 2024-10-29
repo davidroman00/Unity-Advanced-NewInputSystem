@@ -12,9 +12,9 @@ public class PlayerInputController : MonoBehaviour
     Transform _camera;
     public PlayerControllsDefault PlayerControlls;
     InputAction _move;
-    //InputAction _look;
     InputAction _pause;
     InputAction _interact;
+    InputAction _jump;
     //InputActionRebindingExtensions.RebindingOperation _interactRebind;
     CharacterController _characterController;
     Vector3 _moveDirection;
@@ -46,22 +46,22 @@ public class PlayerInputController : MonoBehaviour
     void OnEnable()
     {
         _move = PlayerControlls.Player.Move;
-        //_look = PlayerControlls.Player.Look;
         _pause = PlayerControlls.Player.Pause;
         _interact = PlayerControlls.Player.Interact;
+        _jump = PlayerControlls.Player.Jump;
 
         _move.Enable();
-        //_look.Enable();
         _pause.Enable();
         _interact.Enable();
+        _jump.Enable();
 
         _pause.performed += Pause;
         _interact.performed += Interact;
+        _jump.performed += Jump;
     }
     void OnDisable()
     {
         _move.Disable();
-        //_look.Disable();
         _pause.Disable();
         _interact.Disable();
     }
@@ -92,6 +92,10 @@ public class PlayerInputController : MonoBehaviour
                     break;
             }
         }
+    }
+    private void Jump(InputAction.CallbackContext context)
+    {
+        Debug.Log("Jumped");
     }
     void ChestInteraction()
     {
