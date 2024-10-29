@@ -18,7 +18,7 @@ public class PlayerInputController : MonoBehaviour
     //InputActionRebindingExtensions.RebindingOperation _interactRebind;
     CharacterController _characterController;
     Vector3 _moveDirection;
-    Vector2 _initialDirection;
+    Vector3 _initialDirection;
     [SerializeField]
     float _speed;
     float _turnSmoothTime = .075f;
@@ -68,7 +68,10 @@ public class PlayerInputController : MonoBehaviour
 
     void Update()
     {
-        //CharacterMoveAndRotation();
+        if (_move.ReadValue<Vector2>().magnitude > .05f)
+        {
+            CharacterMoveAndRotation();
+        }
     }
     private void Pause(InputAction.CallbackContext context)
     {
@@ -132,17 +135,15 @@ public class PlayerInputController : MonoBehaviour
     // }
     void CharacterMoveAndRotation()
     {
-        _initialDirection = _move.ReadValue<Vector2>();
-        //_initialDirection = new(_moveDirection.x, 0, _moveDirection.y);
+        Vector2 inputVector = _move.ReadValue<Vector2>();
+        _initialDirection = new(inputVector.x, 0f, inputVector.y);
 
-        _targetAngle = Mathf.Atan2(_initialDirection.x, _initialDirection.y) * Mathf.Rad2Deg + _camera.eulerAngles.y;
+        _targetAngle = Mathf.Atan2(_initialDirection.x, _initialDirection.z) * Mathf.Rad2Deg + _camera.eulerAngles.y;
         _appliedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
         transform.rotation = Quaternion.Euler(0, _appliedAngle, 0);
 
         _moveDirection = Quaternion.Euler(0, _targetAngle, 0) * Vector3.forward;
         _characterController.Move(_speed * Time.deltaTime * _moveDirection);
-
-        Debug.Log(_initialDirection);
     }
 }
 
