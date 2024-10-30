@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -20,6 +18,7 @@ public class MenuButtonController : MonoBehaviour
         _pauseMenu.SetActive(false);
 
         Time.timeScale = 1.0f;
+        Cursor.visible = false;
     }
     public void ShowOptions()
     {

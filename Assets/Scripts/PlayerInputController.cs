@@ -46,6 +46,8 @@ public class PlayerInputController : MonoBehaviour
     {
         PlayerControlls = new PlayerControllsDefault();
         _characterController = GetComponent<CharacterController>();
+
+        Cursor.visible = false;
     }
     void OnEnable()
     {
@@ -76,16 +78,17 @@ public class PlayerInputController : MonoBehaviour
         {
             CharacterMoveAndRotation();
         }
-        _yVelocity += _gravity * _gravityStrength * Time.deltaTime;
-        _characterController.Move(new(0, _yVelocity * Time.deltaTime, 0));
+        
+        HandleYVelocity();
     }
     private void Pause(InputAction.CallbackContext context)
     {
         PlayerControlls.Player.Disable();
         PlayerControlls.UI.Enable();
-        _pauseMenu.SetActive(true);  
+        _pauseMenu.SetActive(true);
 
-        Time.timeScale = 0f;      
+        Time.timeScale = 0f;
+        Cursor.visible = true;
     }
     private void Interact(InputAction.CallbackContext context)
     {
@@ -106,6 +109,11 @@ public class PlayerInputController : MonoBehaviour
     private void Jump(InputAction.CallbackContext context)
     {
         _yVelocity = _jumpSpeed;
+    }
+    void HandleYVelocity()
+    {
+        _yVelocity += _gravity * _gravityStrength * Time.deltaTime;
+        _characterController.Move(new(0, _yVelocity * Time.deltaTime, 0));
     }
     void ChestInteraction()
     {
