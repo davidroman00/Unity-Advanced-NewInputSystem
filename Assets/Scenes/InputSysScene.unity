@@ -365,6 +365,8 @@ MonoBehaviour:
   _pauseMenu: {fileID: 1252778863}
   _camera: {fileID: 963194228}
   _speed: 8
+  _gravityStrength: 2
+  _jumpSpeed: 7
 --- !u!114 &90381911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,7 +698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650241771}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.050805245, y: -0.000000006519195, z: -3.3163758e-10, w: 0.9987086}
+  m_LocalRotation: {x: -0.05080524, y: 9.869271e-10, z: 5.0205916e-11, w: 0.9987086}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -941,7 +943,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.05080525, y: -0.000000009892815, z: -5.0325677e-10, w: 0.9987086}
+  m_LocalRotation: {x: -0.05080525, y: 0.000000003849155, z: 1.9581016e-10, w: 0.9987086}
   m_LocalPosition: {x: -0.14, y: 1.254, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2160,7 +2162,7 @@ GameObject:
   - component: {fileID: 1290938151}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2323,7 +2325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315123961}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.01874012, y: 2.4248764e-24, z: 5.3706597e-25, w: 0.9998244}
+  m_LocalRotation: {x: 0.01874012, y: -0, z: -0, w: 0.9998244}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2604,7 +2606,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598248270}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.016211405, y: -0.00000001720428, z: -2.789422e-10, w: 0.99986863}
+  m_LocalRotation: {x: -0.016211405, y: 0.000000017204117, z: 2.7893957e-10, w: 0.99986863}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

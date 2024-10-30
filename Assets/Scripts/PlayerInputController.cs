@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class PlayerInputController : MonoBehaviour
 {
-    //public static KeyCode InteractKeyCode;
     [SerializeField]
     GameObject _pauseMenu;
     [SerializeField]
@@ -29,6 +27,12 @@ public class PlayerInputController : MonoBehaviour
     //GameObject[] _itemSlots;
     public List<Item> Inventory = new();
     Collider _interactableObject;
+    float _gravity = -9.81f;
+    [SerializeField]
+    float _gravityStrength;
+    [SerializeField]
+    float _jumpSpeed;
+    float _yVelocity;
 
     public class Item
     {
@@ -72,6 +76,8 @@ public class PlayerInputController : MonoBehaviour
         {
             CharacterMoveAndRotation();
         }
+        _yVelocity += _gravity * _gravityStrength * Time.deltaTime;
+        _characterController.Move(new(0, _yVelocity * Time.deltaTime, 0));
     }
     private void Pause(InputAction.CallbackContext context)
     {
@@ -95,7 +101,7 @@ public class PlayerInputController : MonoBehaviour
     }
     private void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log("Jumped");
+        _yVelocity = _jumpSpeed;
     }
     void ChestInteraction()
     {
@@ -107,8 +113,8 @@ public class PlayerInputController : MonoBehaviour
         //if (Inventory.Count < _itemSlots.Length)
         //{
         CollectibleItemLogic pickedItem = _interactableObject.GetComponent<CollectibleItemLogic>();
-        Item newInventoryItem = new(pickedItem.Image);
-        Inventory.Add(newInventoryItem);
+        //Item newInventoryItem = new(pickedItem.Image);
+        //Inventory.Add(newInventoryItem);
         pickedItem.OnItemPicked();
         //RefreshInventoryUI();
         //}
