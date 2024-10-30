@@ -15,7 +15,11 @@ public class MenuButtonController : MonoBehaviour
     TextMeshProUGUI _interactKeybindText;
     public void ResumeGame()
     {
+        _playerInputController.PlayerControlls.UI.Disable();
+        _playerInputController.PlayerControlls.Player.Enable();
         _pauseMenu.SetActive(false);
+
+        Time.timeScale = 1.0f;
     }
     public void ShowOptions()
     {
@@ -33,6 +37,6 @@ public class MenuButtonController : MonoBehaviour
     }
     public void InteractKeybindChange()
     {
-        //_playerInputController.RebindInteract();
+
     }
 }

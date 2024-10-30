@@ -698,7 +698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650241771}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.05080524, y: 9.869271e-10, z: 5.0205916e-11, w: 0.9987086}
+  m_LocalRotation: {x: -0.050805245, y: -0.0000000065191967, z: -3.3163766e-10, w: 0.9987086}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -943,7 +943,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.05080525, y: 0.000000003849155, z: 1.9581016e-10, w: 0.9987086}
+  m_LocalRotation: {x: -0.05080525, y: -0.000000009892816, z: -5.032569e-10, w: 0.9987086}
   m_LocalPosition: {x: -0.14, y: 1.254, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980d423fc71c48246a85bdc03dfb7766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInputController: {fileID: 0}
+  _playerInputController: {fileID: 90381910}
   _pauseMenu: {fileID: 1252778863}
   _optionsMenu: {fileID: 1208579615}
   _interactKeybindText: {fileID: 1005910079}
@@ -2606,7 +2606,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598248270}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.016211405, y: 0.000000017204117, z: 2.7893957e-10, w: 0.99986863}
+  m_LocalRotation: {x: -0.016211405, y: -0.000000017204124, z: -2.7893968e-10, w: 0.99986863}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

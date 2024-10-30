@@ -81,7 +81,11 @@ public class PlayerInputController : MonoBehaviour
     }
     private void Pause(InputAction.CallbackContext context)
     {
-        _pauseMenu.SetActive(true);
+        PlayerControlls.Player.Disable();
+        PlayerControlls.UI.Enable();
+        _pauseMenu.SetActive(true);  
+
+        Time.timeScale = 0f;      
     }
     private void Interact(InputAction.CallbackContext context)
     {
