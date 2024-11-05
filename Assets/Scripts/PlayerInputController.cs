@@ -13,7 +13,6 @@ public class PlayerInputController : MonoBehaviour
     InputAction _pause;
     InputAction _interact;
     InputAction _jump;
-    //InputActionRebindingExtensions.RebindingOperation _interactRebind;
     CharacterController _characterController;
     Vector3 _moveDirection;
     Vector3 _initialDirection;
@@ -78,7 +77,7 @@ public class PlayerInputController : MonoBehaviour
         {
             CharacterMoveAndRotation();
         }
-        
+
         HandleYVelocity();
     }
     private void Pause(InputAction.CallbackContext context)
